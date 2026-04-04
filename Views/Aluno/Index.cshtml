@@ -1,0 +1,30 @@
+@model List<Academico.Models.Aluno>;
+@{
+    ViewData["Title"] = "Perfil Aluno";
+}
+
+@foreach(Aluno item in Model)
+{
+    <div class="card mb-3 w-100 mt-5" >
+    <div class="row g-0">
+        <div class="col-md-4 w-30">
+        <img src="img/avatar.png" class="img-fluid rounded-start" alt="Avatar">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body h-100 d-flex flex-column justify-content-around">
+            <p class="card-text">Nome: @item.Nome</p>
+            <p class="card-text">Data Nascimento: @item.DataNascimento.Day/@item.DataNascimento.Month/@item.DataNascimento.Year</p>
+            <p class="card-text">Curso: @item.Curso</p>
+            <p class="card-text">Matrícula: @item.Matricula</p>
+        </div>
+        </div>
+    </div>
+    </div>
+}
+
+<ul class="list-group list-group-flush mt-5">
+    <h5>Disciplinas Cursadas:</h5>
+    <li class="list-group-item">Programação WEB I</li>
+    <li class="list-group-item">Fundamentos de Banco de Dados</li>
+    <li class="list-group-item">Cálculo I</li>
+</ul>

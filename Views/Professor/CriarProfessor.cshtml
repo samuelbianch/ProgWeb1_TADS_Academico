@@ -1,6 +1,6 @@
 @model Professor
 
-<form method="post" asp-action="CriarProfessor">
+<form method="post" asp-controller="Professor" asp-action="CriarProfessor">
   <div class="form-group">
     <label for="formGroupExampleInput">Nome</label>
     <input asp-for="Nome" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">

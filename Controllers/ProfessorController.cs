@@ -13,6 +13,11 @@ public class ProfessorController : Controller
         _professorRepository = professorRepository;
     }
 
+    public async Task<IActionResult> ProfessoresAsync()
+    {
+        return View(await _professorRepository.GetAllProfessoresAsync());
+    }
+
     public IActionResult CriarProfessor()
     {
         return View();
@@ -21,7 +26,15 @@ public class ProfessorController : Controller
     [HttpPost]
     public async Task<IActionResult> CriarProfessorAsync(Professor professor)
     {
-        await _professorRepository.CriarProfessorAsync(professor);
+        if(await _professorRepository.CriarProfessorAsync(professor))
+        {
+            TempData["Tipo"] = "success";
+            TempData["Mensagem"] = $"Professor {professor.Nome} cadastrado com sucesso!";
+        } else
+        {
+            TempData["Tipo"] = "danger";
+            TempData["Mensagem"] = $"Professor {professor.Nome} não cadastrado!";
+        }
         return RedirectToAction("CriarProfessor");
     }
 }

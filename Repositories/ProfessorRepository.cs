@@ -11,15 +11,22 @@ public class ProfessorRepository : IProfessorRepository
     {
         _context = context;
     }
-    public async Task CriarProfessorAsync(Professor professor)
+    public async Task<bool> CriarProfessorAsync(Professor professor)
     {
         await _context.AddAsync(professor);
         await _context.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<List<Professor>> GetAllProfessoresAsync()
+    {
+        return await _context.Professor.ToListAsync();
     }
     
 }
 
 public interface IProfessorRepository
 {
-    Task CriarProfessorAsync(Professor Professor);
+    Task<bool> CriarProfessorAsync(Professor Professor);
+    Task<List<Professor>> GetAllProfessoresAsync();
 }

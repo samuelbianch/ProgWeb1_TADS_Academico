@@ -1,0 +1,8 @@
+@model List<Professor>;
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3">
+        <h3>Nome: @item.Nome</h3>
+    </div>
+}

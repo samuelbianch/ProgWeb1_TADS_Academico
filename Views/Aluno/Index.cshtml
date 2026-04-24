@@ -3,6 +3,11 @@
     ViewData["Title"] = "Perfil Aluno";
 }
 
+<div class="">
+    <a class="btn btn-primary" asp-controller="Aluno" asp-action="CriarAluno" >Cadastrar Aluno</a>
+    <a class="btn btn-primary" asp-controller="Professor" asp-action="CriarProfessor" >Cadastrar Professor</a>
+</div>
+
 @foreach(Aluno item in Model)
 {
     <div class="card mb-3 w-100 mt-5" >
